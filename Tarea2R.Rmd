@@ -1,0 +1,120 @@
+---
+title: "Tarea 2"
+author: "Santin Gallardo 135936"
+output: html_document
+---
+---
+title: "Tarea num 2"
+author: "Santin Gallardo 135936"
+output: html_document
+---
+
+title: "Tarea 2"
+author: "Santin Gallardo 135936"
+output: html_document
+---
+
+Pregunta 1
+
+```{r}
+library(datasets)
+data(iris)
+?iris
+str(iris)
+```
+
+El conjunto de datos muestra 5 columnas con 150 flores de tres tipos diferentes. Estos datos muestran el largo y ancho del petalo y del sepalo, ademas del tipo de flor.
+
+Pregunta 2
+
+```{r}
+str(iris)
+sapply(iris,class)
+```
+
+Se muestran cuatro columnas numéricas y una que contiene caracteres.
+
+Pregunta 3
+
+```{r}
+x<-is.na(iris)
+sum(x)
+```
+
+Se tienen 0 valores con NA
+
+Preguntas 4 y 5
+
+```{r}
+colSums(iris[,-5])
+colMeans(iris[,-5])
+sapply(iris[,-5],sum)
+sapply(iris[,-5],mean)
+```
+
+Pregunta 6
+
+```{r}
+which(iris[,1]>=5.84)
+```
+
+Pregunta 7
+
+``` {r}
+sum(which(iris[,1]>=5.84))
+mean(which(iris[,1]>=5.84))
+```
+
+Pregunta 8
+
+``` {r}
+subset(iris,Sepal.Length>5.4 & Species=="setosa" )
+```
+
+Pregunta 9
+
+``` {r}
+subset(iris,Species %in%  c("setosa","virginica") & Sepal.Length > 5.4)
+```
+
+Pregunta 10
+
+``` {r}
+setwd("C:/Users/santin/Documents/Tarea 2R")
+write.csv(tail(iris,6),file="UltimasObs.csv",row.names=F)
+```
+
+Pregunta 11
+
+``` {r}
+cuadratica <- function(a, b, c) {
+        if(b^2-4*a*c>=0){
+                print(c((-b+sqrt(b^2-4*a*c))/(2*a), (-b-sqrt(b^2-4*a*c))/(2*a)))
+        }else {
+                print(c("No existe Solucion en los Reales"))
+        }
+}
+cuadratica(3,-1,-2)
+cuadratica(9,12,4)
+cuadratica(1,1,1)
+```
+
+Pregunta 12
+
+``` {r}
+anualidad <- function(n, i, P = 1, Vencida = TRUE) {
+        suma<-0
+        for(j in 1:n){
+             suma<-suma+(1/(1+i))^j   
+        }
+        if(Vencida==TRUE){
+                print(c(P*suma))
+        }else{
+                print(c(P*suma*(1+i)))
+        }
+        
+}
+anualidad(n=15,i=0.035)
+anualidad(n=15,i=0.035,P=5000)
+anualidad(n=15,i=0.035,P=5000,Vencida=F)
+```
